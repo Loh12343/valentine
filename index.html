@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💕 С днём Святого Валетина 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 50%, #f67280 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Falling hearts animation */
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            animation: fall 8s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10%;
+                opacity: 0.7;
+            }
+            100% {
+                top: 110%;
+                opacity: 0;
+            }
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            z-index: 10;
+        }
+
+        .gif-container {
+            margin-bottom: 30px;
+        }
+
+        .gif-container img {
+            width: 250px;
+            height: 250px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #ff6b9d;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            font-size: 1.2em;
+            font-weight: bold;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #yesBtn {
+            background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+            color: white;
+            padding: 15px 40px;
+        }
+
+        #yesBtn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(255, 107, 157, 0.4);
+        }
+
+        #noBtn {
+            background: linear-gradient(135deg, #ccc, #999);
+            color: white;
+            padding: 15px 40px;
+        }
+
+        #noBtn:hover {
+            transform: translateY(-2px);
+        }
+
+        .success-message {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .success-message h2 {
+            color: #ff6b9d;
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .success-message p {
+            color: #666;
+            font-size: 1.2em;
+        }
+
+        .hearts-burst {
+            font-size: 40px;
+            animation: burst 0.5s ease-out;
+        }
+
+        @keyframes burst {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background falling hearts -->
+    <script>
+        for (let i = 0; i < 20; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '💕';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 8 + 's';
+            heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+            document.body.appendChild(heart);
+        }
+    </script>
+
+    <div class="container">
+        <div class="gif-container">
+            <img src="https://media.tenor.com/MKkJWYigjycAAAA1/cute-cat-cat-cute.webp" alt="Valentine's Day" onerror="this.src='https://media.giphy.com/media/l0HlSLbVBJBNGQBZC/giphy.gif'">
+        </div>
+        
+        <h1>💝 С днём Святого Валетина 💝</h1>
+        
+        <div id="questionSection">
+            <p class="question">Согласна ли ты провести этот день со мной? 💕</p>
+            
+            <div class="buttons">
+                <button id="yesBtn" onclick="handleYes()">Да! 💖</button>
+                <button id="noBtn" onclick="handleNo()">Нет(</button>
+            </div>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            <div class="hearts-burst">💕💖💗💓💝</div>
+            <h2>Yaay! 🎉</h2>
+            <p>Я знал что будешь согласна)))</p>
+            <p style="margin-top: 15px;">Я тебя люблю! ❤️</p>
+        </div>
+    </div>
+
+    <script>
+        let noClickCount = 0;
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+
+        function handleNo() {
+            noClickCount++;
+            
+            // Reduce the size of No button
+            const currentPadding = parseInt(window.getComputedStyle(noBtn).paddingTop);
+            const currentFontSize = parseInt(window.getComputedStyle(noBtn).fontSize);
+            
+            if (currentPadding > 5) {
+                noBtn.style.padding = `${currentPadding - 3}px ${currentPadding * 2 - 6}px`;
+                noBtn.style.fontSize = `${currentFontSize - 0.1}em`;
+            }
+            
+            // Increase the size of Yes button
+            const currentYesPadding = parseInt(window.getComputedStyle(yesBtn).paddingTop);
+            const currentYesFontSize = parseInt(window.getComputedStyle(yesBtn).fontSize);
+            
+            yesBtn.style.padding = `${currentYesPadding + 3}px ${currentYesPadding * 2 + 6}px`;
+            yesBtn.style.fontSize = `${currentYesFontSize + 0.1}em`;
+            
+            // Make No button harder to click after several attempts
+            if (noClickCount > 5) {
+                noBtn.style.opacity = '0.5';
+            }
+            
+            if (noClickCount > 8) {
+                noBtn.style.display = 'none';
+            }
+        }
+
+        function handleYes() {
+            document.getElementById('questionSection').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Create celebration effect
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    createFloatingHeart();
+                }, i * 100);
+            }
+        }
+
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '💖';
+            heart.style.position = 'fixed';
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.top = window.innerHeight + 'px';
+            heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
+            heart.style.zIndex = '1000';
+            heart.style.pointerEvents = 'none';
+            document.body.appendChild(heart);
+            
+            const animation = heart.animate([
+                { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                { transform: `translateY(-${window.innerHeight + 100}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+            ], {
+                duration: 3000,
+                easing: 'ease-out'
+            });
+            
+            animation.onfinish = () => heart.remove();
+        }
+    </script>
+</body>
+</html>
