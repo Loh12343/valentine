@@ -12,7 +12,7 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -22,7 +22,6 @@
             position: relative;
         }
 
-        /* Falling hearts animation */
         .heart {
             position: absolute;
             font-size: 30px;
@@ -31,14 +30,8 @@
         }
 
         @keyframes fall {
-            0% {
-                top: -10%;
-                opacity: 0.7;
-            }
-            100% {
-                top: 110%;
-                opacity: 0;
-            }
+            0% { top: -10%; opacity: 0.7; }
+            100% { top: 110%; opacity: 0; }
         }
 
         .container {
@@ -52,10 +45,6 @@
             z-index: 10;
         }
 
-        .gif-container {
-            margin-bottom: 20px;
-        }
-
         .gif-container img {
             width: 200px;
             height: 200px;
@@ -66,19 +55,13 @@
 
         h1 {
             color: #ff6b9d;
-            font-size: 1.8em;
             margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            line-height: 1.3;
         }
 
         .question {
             font-size: 1.2em;
-            color: #333;
             margin-bottom: 30px;
             font-weight: bold;
-            line-height: 1.4;
-            padding: 0 10px;
         }
 
         .buttons {
@@ -95,31 +78,18 @@
             border: none;
             border-radius: 15px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            min-height: 50px;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
+            transition: transform 0.3s ease;
+            padding: 15px 35px;
         }
 
         #yesBtn {
             background: linear-gradient(135deg, #ff6b9d, #ff8fab);
             color: white;
-            padding: 15px 35px;
-        }
-
-        #yesBtn:active {
-            transform: scale(0.95);
         }
 
         #noBtn {
             background: linear-gradient(135deg, #ccc, #999);
             color: white;
-            padding: 15px 35px;
-        }
-
-        #noBtn:active {
-            transform: scale(0.95);
         }
 
         .success-message {
@@ -129,209 +99,86 @@
 
         .success-message h2 {
             color: #ff6b9d;
-            font-size: 1.8em;
             margin-bottom: 15px;
         }
 
-        .success-message p {
-            color: #666;
-            font-size: 1.1em;
-            line-height: 1.5;
-        }
-
-        /* Mobile optimizations */
         @media (max-width: 480px) {
-            .container {
-                padding: 25px 15px;
-                width: 95%;
-            }
-
             .gif-container img {
                 width: 180px;
                 height: 180px;
-            }
-
-            h1 {
-                font-size: 1.5em;
-            }
-
-            .question {
-                font-size: 1.1em;
-                margin-bottom: 25px;
-            }
-
-            button {
-                font-size: 1em;
-                min-height: 48px;
-            }
-
-            #yesBtn, #noBtn {
-                padding: 12px 28px;
-            }
-
-            .success-message h2 {
-                font-size: 1.5em;
-            }
-
-            .success-message p {
-                font-size: 1em;
-            }
-        }
-
-        /* Landscape mobile */
-        @media (max-height: 600px) and (orientation: landscape) {
-            .container {
-                padding: 20px 15px;
-            }
-
-            .gif-container {
-                margin-bottom: 15px;
-            }
-
-            .gif-container img {
-                width: 150px;
-                height: 150px;
-            }
-
-            h1 {
-                font-size: 1.3em;
-                margin-bottom: 10px;
-            }
-
-            .question {
-                font-size: 1em;
-                margin-bottom: 20px;
-            }
-        }
-
-        .hearts-burst {
-            font-size: 40px;
-            animation: burst 0.5s ease-out;
-        }
-
-        @keyframes burst {
-            0% {
-                transform: scale(0);
-                opacity: 0;
-            }
-            50% {
-                transform: scale(1.2);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Background falling hearts -->
-    <script>
-        for (let i = 0; i < 20; i++) {
-            const heart = document.createElement('div');
-            heart.className = 'heart';
-            heart.innerHTML = '💕';
-            heart.style.left = Math.random() * 100 + '%';
-            heart.style.animationDelay = Math.random() * 8 + 's';
-            heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
-            document.body.appendChild(heart);
-        }
-    </script>
 
-    <div class="container">
-        <div class="gif-container">
-            <img src="https://media.tenor.com/MKkJWYigjycAAAA1/cute-cat-cat-cute.webp" alt="Valentine's Day" onerror="this.src='https://media.giphy.com/media/l0HlSLbVBJBNGQBZC/giphy.gif'">
-        </div>
-        
-        <h1>💝 С днём Святого Валетина 💝</h1>
-        
-        <div id="questionSection">
-            <p class="question">Согласна ли ты провести этот день со мной? 💕</p>
-            
-            <div class="buttons">
-                <button id="yesBtn" onclick="handleYes()">Да! 💖</button>
-                <button id="noBtn" onclick="handleNo()">Нет(</button>
-            </div>
-        </div>
+<script>
+    for (let i = 0; i < 20; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '💕';
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDelay = Math.random() * 8 + 's';
+        document.body.appendChild(heart);
+    }
+</script>
 
-        <div class="success-message" id="successMessage">
-            <div class="hearts-burst">💕💖💗💓💝</div>
-            <h2>Yaay! 🎉</h2>
-            <p>Я знал что будешь согласна)))</p>
-            <p style="margin-top: 15px;">Я тебя люблю! ❤️</p>
+<div class="container">
+    <div class="gif-container">
+        <img src="https://media.tenor.com/MKkJWYigjycAAAA1/cute-cat-cat-cute.webp">
+    </div>
+    
+    <h1>💝 С днём Святого Валетина 💝</h1>
+    
+    <div id="questionSection">
+        <p class="question">Согласна ли ты провести этот день со мной? 💕</p>
+        
+        <div class="buttons">
+            <button id="yesBtn" onclick="handleYes()">Да! 💖</button>
+            <button id="noBtn" onclick="handleNo()">Нет(</button>
         </div>
     </div>
 
-    <script>
-        let noClickCount = 0;
-        const noBtn = document.getElementById('noBtn');
-        const yesBtn = document.getElementById('yesBtn');
+    <div class="success-message" id="successMessage">
+        <h2>Yaay! 🎉</h2>
+        <p>Я знал что будешь согласна)))</p>
+        <p style="margin-top: 15px;">Я тебя люблю! ❤️</p>
+    </div>
+</div>
 
-        function handleNo() {
-            noClickCount++;
-            
-            // Reduce the size of No button slightly
-            const currentPadding = parseInt(window.getComputedStyle(noBtn).paddingTop);
-            const currentFontSize = parseFloat(window.getComputedStyle(noBtn).fontSize);
-            
-            if (currentPadding > 3) {
-                noBtn.style.padding = `${currentPadding - 1}px ${(currentPadding - 1) * 2.5}px`;
-            }
-            if (currentFontSize > 10) {
-                noBtn.style.fontSize = `${currentFontSize - 1}px`;
-            }
-            
-            // Increase the size of Yes button slightly
-            const currentYesPadding = parseInt(window.getComputedStyle(yesBtn).paddingTop);
-            const currentYesFontSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
-            
-            yesBtn.style.padding = `${currentYesPadding + 2}px ${(currentYesPadding + 2) * 2.5}px`;
-            yesBtn.style.fontSize = `${currentYesFontSize + 2}px`;
-            
-            // Make No button harder to click after several attempts
-            if (noClickCount > 5) {
-                noBtn.style.opacity = '0.5';
-            }
-            
-            if (noClickCount > 10) {
-                noBtn.style.display = 'none';
-            }
+<script>
+    let noClickCount = 0;
+    let yesScale = 1;
+    let noScale = 1;
+
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+
+    function handleNo() {
+        noClickCount++;
+
+        // Micșorăm butonul "Нет"
+        if (noScale > 0.5) {
+            noScale -= 0.05;
+            noBtn.style.transform = `scale(${noScale})`;
         }
 
-        function handleYes() {
-            document.getElementById('questionSection').style.display = 'none';
-            document.getElementById('successMessage').style.display = 'block';
-            
-            // Create celebration effect
-            for (let i = 0; i < 30; i++) {
-                setTimeout(() => {
-                    createFloatingHeart();
-                }, i * 100);
-            }
+        // Mărim lent butonul "Да"
+        if (yesScale < 3) {
+            yesScale += 0.1;
+            yesBtn.style.transform = `scale(${yesScale})`;
         }
 
-        function createFloatingHeart() {
-            const heart = document.createElement('div');
-            heart.innerHTML = '💖';
-            heart.style.position = 'fixed';
-            heart.style.left = Math.random() * window.innerWidth + 'px';
-            heart.style.top = window.innerHeight + 'px';
-            heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
-            heart.style.zIndex = '1000';
-            heart.style.pointerEvents = 'none';
-            document.body.appendChild(heart);
-            
-            const animation = heart.animate([
-                { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
-                { transform: `translateY(-${window.innerHeight + 100}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
-            ], {
-                duration: 3000,
-                easing: 'ease-out'
-            });
-            
-            animation.onfinish = () => heart.remove();
+        if (noClickCount > 10) {
+            noBtn.style.display = 'none';
         }
-    </script>
+    }
+
+    function handleYes() {
+        document.getElementById('questionSection').style.display = 'none';
+        document.getElementById('successMessage').style.display = 'block';
+    }
+</script>
+
 </body>
 </html>
